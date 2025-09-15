@@ -1,0 +1,24 @@
+.article-list h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.article-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.article-list li {
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.article-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.article-list a:hover {
+  color: #e53935;
+}

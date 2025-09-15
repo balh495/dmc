@@ -1,0 +1,38 @@
+<header class="relative bg-black text-white">
+  <!-- Logo watermark left (fond) -->
+  <div class="">
+    <img src="/assets/dmc_logo.png" alt="watermark" class="opacity-10 w-56 ml-6 h-full object-contain" />
+  </div>
+
+  <div class="relative z-10 container mx-auto flex items-center justify-between px-6 py-4">
+    <div class="flex items-center gap-3">
+      <img src="/assets/logo-mini.svg" alt="logo" class="w-10 h-10" />
+      <div class="text-xl font-bold">MonMédia</div>
+    </div>
+
+    <nav class="hidden md:flex gap-6 items-center">
+      <a routerLink="/" class="hover:text-red-400">Accueil</a>
+      <a routerLink="/actus" class="hover:text-red-400">Actualités</a>
+      <a routerLink="/videos" class="hover:text-red-400">Vidéos</a>
+      <a routerLink="/contact" class="hover:text-red-400">Contact</a>
+    </nav>
+
+    <button class="md:hidden p-2" (click)="toggle()" aria-label="menu">
+      <svg *ngIf="!menuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg *ngIf="menuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div *ngIf="menuOpen" class="md:hidden bg-black text-white">
+    <div class="container mx-auto px-6 py-4 flex flex-col gap-3">
+      <a routerLink="/" (click)="toggle()">Accueil</a>
+      <a routerLink="/actus" (click)="toggle()">Actualités</a>
+      <a routerLink="/videos" (click)="toggle()">Vidéos</a>
+      <a routerLink="/contact" (click)="toggle()">Contact</a>
+    </div>
+  </div>
+</header>

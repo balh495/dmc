@@ -1,0 +1,16 @@
+<div class="container mx-auto px-6 py-10">
+  <div *ngIf="article; else notfound">
+    <h1 class="text-2xl font-bold mb-4">{{ article.title }}</h1>
+    <div class="bg-white rounded-2xl overflow-hidden shadow">
+      <div class="aspect-video">
+        <iframe [src]="safeUrl" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+      </div>
+      <div class="p-4">
+        <p>{{ article.excerpt }}</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #notfound>
+    <p>Article non trouvé.</p>
+  </ng-template>
+</div>

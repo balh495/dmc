@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<main class="container mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <section class="lg:col-span-2 space-y-10">
+    <app-article-card *ngFor="let a of articles" [article]="a"></app-article-card>
+  </section>
+
+  <!-- Sidebar on desktop; on mobile this naturally drops under content -->
+  <div class="lg:col-span-1">
+    <app-article-list [articles]="articles"></app-article-list>
+  </div>
+</main>
+
+<app-footer></app-footer>
