@@ -1,14 +1,25 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, DatePipe],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
-export class Header {
+export class Header implements OnInit {
   menuOpen = false;
-  toggle() { this.menuOpen = !this.menuOpen; }
+  today = new Date();
+
+  toggle() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  ngOnInit() {
+    // Update the date every minute
+    setInterval(() => {
+      this.today = new Date();
+    }, 60000);
+  }
 }

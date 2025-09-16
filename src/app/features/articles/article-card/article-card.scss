@@ -1,21 +1,113 @@
 .article-card {
+  --primary-color: #e53935;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-bottom: 2rem;
+  transition: all 0.3s ease;
 }
 
-.article-card__video iframe {
+.article-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.article-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.article-card__media iframe {
   width: 100%;
-  height: 315px;
+  height: 100%;
+}
+
+.article-card__category {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .article-card__content {
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
-.article-card__content h2 {
+.article-card__meta {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.article-card__date {
+  margin-right: 0.75rem;
+}
+
+.article-card__read-time {
+  display: flex;
+  align-items: center;
+}
+
+.article-card__read-time-icon {
+  height: 0.75rem;
+  width: 0.75rem;
+  margin-right: 0.25rem;
+}
+
+.article-card__title {
   font-size: 1.25rem;
-  margin: 0 0 0.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.article-card__title a:hover {
+  color: var(--primary-color);
+}
+
+.article-card__excerpt {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.article-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.article-card__author {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.article-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .article-card__tags {
+    margin-top: 0;
+  }
+}
+
+.article-card__tag {
+  font-size: 0.75rem;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
 }
