@@ -3,10 +3,28 @@
     <h1 class="text-2xl font-bold mb-4">{{ article.title }}</h1>
     <div class="bg-white rounded-2xl overflow-hidden shadow">
       <div class="aspect-video">
-        <iframe [src]="safeUrl" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+        <!-- Show video if videoId exists, otherwise show image -->
+        <iframe *ngIf="article.videoId" [src]="safeUrl" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+        <img *ngIf="!article.videoId && thumbnailUrl" [src]="thumbnailUrl" [alt]="article.title" class="w-full h-full object-cover">
       </div>
       <div class="p-4">
+        <div class="article-metadata mb-4">
+          <span *ngIf="article.category" class="article-category mr-3">{{ article.category }}</span>
+          <span *ngIf="article.date" class="article-date mr-3">{{ article.date }}</span>
+          <span *ngIf="article.author" class="article-author mr-3">Par {{ article.author }}</span>
+          <span *ngIf="article.readTime" class="article-read-time">
+            <svg xmlns="http://www.w3.org/2000/svg" class="article-read-time-icon inline-block h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {{ article.readTime }}
+          </span>
+        </div>
         <p>{{ article.excerpt }}</p>
+        <div *ngIf="article.tags && article.tags.length" class="article-tags mt-4">
+          <span *ngFor="let tag of article.tags" class="article-tag mr-2">
+            #{{ tag }}
+          </span>
+        </div>
       </div>
     </div>
   </div>

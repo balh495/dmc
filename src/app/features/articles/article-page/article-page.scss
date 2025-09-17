@@ -1,0 +1,64 @@
+.article-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.article-category {
+  background-color: #e53935;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+
+.article-date, .article-author, .article-read-time {
+  display: inline-flex;
+  align-items: center;
+}
+
+.article-read-time-icon {
+  color: #666;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.article-tag {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.article-tag:hover {
+  background-color: #e5e7eb;
+}
+
+/* Add some spacing and style to the article content */
+p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .article-metadata {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .article-category, .article-date, .article-author, .article-read-time {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+}

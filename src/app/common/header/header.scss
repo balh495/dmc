@@ -71,6 +71,11 @@
   gap: 0.75rem;
 }
 
+.header__logo img {
+  width: 10rem;
+  height: 6rem;
+}
+
 .header__logo-icon {
   background-color: var(--primary-color);
   border-radius: 9999px;
@@ -81,12 +86,6 @@
 .header__logo-icon img {
   width: 2rem;
   height: 2rem;
-}
-
-.header__logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
 }
 
 .header__logo-tagline {
@@ -206,4 +205,11 @@
 .header__search-icon {
   width: 20px;
   height: 20px;
+}
+
+/* Hide logo on mobile devices */
+@media (max-width: 768px) {
+  .header__logo img {
+    display: none;
+  }
 }

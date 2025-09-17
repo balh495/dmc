@@ -1,0 +1,14 @@
+<div class="container mx-auto px-6 py-10">
+  <div class="category-header">
+    <h1 class="category-title">{{ category }}</h1>
+    <p class="category-description">Tous les articles de la catégorie {{ category }}</p>
+  </div>
+
+  <div class="category-articles">
+    <app-article-card *ngFor="let article of articles" [article]="article"></app-article-card>
+  </div>
+
+  <div *ngIf="articles.length === 0" class="no-articles">
+    <p>Aucun article trouvé dans cette catégorie.</p>
+  </div>
+</div>

@@ -1,8 +1,23 @@
 <app-header></app-header>
 
+<div class="ad-banner">
+  <div class="ad-banner__content">
+    <!-- Advertising banner content goes here -->
+    <img src="banner.jpg" alt="Advertising Banner">
+  </div>
+</div>
+
 <main class="layout container">
   <section class="layout__main">
-    <app-article-card *ngFor="let a of articles" [article]="a" class="space-y-10"></app-article-card>
+    <div *ngFor="let category of categories" class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">{{ category }}</h2>
+        <a [routerLink]="['/category', category]" class="view-all-link">Voir tous les articles</a>
+      </div>
+      <div class="category-articles">
+        <app-article-card *ngFor="let a of getArticlesByCategory(category)" [article]="a" class="space-y-10"></app-article-card>
+      </div>
+    </div>
   </section>
 
   <!-- Sidebar on desktop; on mobile this naturally drops under content -->
