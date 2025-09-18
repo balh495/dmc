@@ -27,6 +27,25 @@
         </div>
       </div>
     </div>
+
+    <!-- Related articles section -->
+    <div *ngIf="relatedArticles.length > 0" class="mt-8">
+      <h3 class="text-xl font-semibold mb-4">Articles de la même catégorie</h3>
+      <div class="flex flex-wrap gap-4 overflow-x-auto">
+        <a *ngFor="let related of relatedArticles" [routerLink]="['/article', related.id]" class="flex-none w-48 bg-white rounded-lg shadow overflow-hidden hover:shadow-md transition-shadow">
+          <!-- Thumbnail -->
+          <div class="h-32 overflow-hidden">
+            <img *ngIf="related.imageUrl" [src]="related.imageUrl" [alt]="related.title" class="w-full h-full object-cover">
+            <img *ngIf="!related.imageUrl && related.videoId" [src]="'https://img.youtube.com/vi/' + related.videoId + '/mqdefault.jpg'" [alt]="related.title" class="w-full h-full object-cover">
+            <img *ngIf="!related.imageUrl && !related.videoId" src="assets/images/article-placeholder.jpg" [alt]="related.title" class="w-full h-full object-cover">
+          </div>
+          <!-- Title -->
+          <div class="p-3">
+            <h4 class="text-sm font-medium line-clamp-2">{{ related.title }}</h4>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
   <ng-template #notfound>
     <p>Article non trouvé.</p>

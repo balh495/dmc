@@ -1,32 +1,26 @@
 <aside class="article-list">
-    <h3 class="article-list__title">À la une</h3>
-
-    <ul class="article-list__items">
-        <li *ngFor="let a of articles" class="article-list__item">
-            <div class="article-list__item-meta">
-                <span *ngIf="a.category" class="article-list__item-category">{{ a.category }}</span>
-                <span *ngIf="a.date" class="article-list__item-date">{{ a.date }}</span>
-            </div>
-
-            <a [routerLink]="['/article', a.id]" class="article-list__item-title">
-                {{ a.title }}
-            </a>
-
-            <div *ngIf="a.author" class="article-list__item-author">
-                Par {{ a.author }}
-            </div>
-        </li>
-    </ul>
+    <h3 class="article-list__title">Catégories</h3>
 
     <div class="article-list__categories">
-        <h4 class="article-list__categories-title">Catégories</h4>
         <div class="article-list__categories-list">
-            <a href="#" class="article-list__category">Économie</a>
-            <a href="#" class="article-list__category">Politique</a>
-            <a href="#" class="article-list__category">Technologie</a>
-            <a href="#" class="article-list__category">Environnement</a>
-            <a href="#" class="article-list__category">Culture</a>
-            <a href="#" class="article-list__category">Santé</a>
+            <a [routerLink]="['/category', 'Économie']" class="article-list__category">
+                <span class="category-icon">📈</span> Économie
+            </a>
+            <a [routerLink]="['/category', 'Politique']" class="article-list__category">
+                <span class="category-icon">🏛️</span> Politique
+            </a>
+            <a [routerLink]="['/category', 'Technologie']" class="article-list__category">
+                <span class="category-icon">💻</span> Technologie
+            </a>
+            <a [routerLink]="['/category', 'Environnement']" class="article-list__category">
+                <span class="category-icon">🌿</span> Environnement
+            </a>
+            <a [routerLink]="['/category', 'Culture']" class="article-list__category">
+                <span class="category-icon">🎭</span> Culture
+            </a>
+            <a [routerLink]="['/category', 'Santé']" class="article-list__category">
+                <span class="category-icon">🏥</span> Santé
+            </a>
         </div>
     </div>
 </aside>

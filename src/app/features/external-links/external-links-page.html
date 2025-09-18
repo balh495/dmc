@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="links-header">
+    <h1>Liens Externes</h1>
+    <p>Une sélection de sites web et ressources utiles de la République du Congo (Congo Brazzaville)</p>
+  </div>
+
+  <div class="links-content">
+    <div *ngFor="let category of categories" class="category-section">
+      <h2 class="category-title">{{ category }}</h2>
+
+      <div class="links-grid">
+        <div *ngFor="let link of groupedLinks[category]" class="link-card">
+          <h3 class="link-title">
+            <a [href]="link.url" target="_blank" rel="noopener noreferrer">
+              {{ link.title }}
+            </a>
+          </h3>
+          <p class="link-description">{{ link.description }}</p>
+          <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="visit-link">
+            Visiter le site
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

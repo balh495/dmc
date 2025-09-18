@@ -368,4 +368,48 @@ export class Article {
   getArticleById(id: number|string) {
     return this.data.find(a => +a.id === +id) ?? null;
   }
+
+  getArticlesByCategory(category: string, excludeId?: number|string) {
+    return this.data.filter(a =>
+      a.category === category &&
+      (excludeId === undefined || +a.id !== +excludeId)
+    );
+  }
+
+  searchArticles(query: string): ArticleData[] {
+    if (!query || query.trim() === '') {
+      return [];
+    }
+
+    const searchTerm = query.toLowerCase().trim();
+
+    return this.data.filter(article => {
+      // Search in title
+      if (article.title.toLowerCase().includes(searchTerm)) {
+        return true;
+      }
+
+      // Search in excerpt
+      if (article.excerpt.toLowerCase().includes(searchTerm)) {
+        return true;
+      }
+
+      // Search in author
+      if (article.author && article.author.toLowerCase().includes(searchTerm)) {
+        return true;
+      }
+
+      // Search in category
+      if (article.category && article.category.toLowerCase().includes(searchTerm)) {
+        return true;
+      }
+
+      // Search in tags
+      if (article.tags && article.tags.some(tag => tag.toLowerCase().includes(searchTerm))) {
+        return true;
+      }
+
+      return false;
+    });
+  }
 }

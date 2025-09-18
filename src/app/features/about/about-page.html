@@ -1,0 +1,35 @@
+<div class="container mx-auto px-6 py-10">
+  <div class="about-header">
+    <h1 class="about-title">À propos de nous</h1>
+  </div>
+
+  <div class="about-content">
+    <section class="about-section">
+      <h2 class="section-title">Notre mission</h2>
+      <p>
+        Digital Média Congo a pour mission de fournir une information de qualité, indépendante et accessible à tous les Congolais.
+        Nous nous engageons à couvrir l'actualité nationale et internationale avec rigueur, impartialité et professionnalisme.
+      </p>
+    </section>
+
+    <section class="about-section">
+      <h2 class="section-title">Notre équipe</h2>
+      <p class="team-intro">
+        Notre équipe est composée de professionnels passionnés qui travaillent chaque jour pour vous offrir une information de qualité.
+      </p>
+
+      <div class="team-grid">
+        <div *ngFor="let member of teamMembers" class="team-member">
+          <div class="team-member-photo">
+            <img [src]="member.photoUrl" [alt]="member.name">
+          </div>
+          <div class="team-member-info">
+            <h3 class="team-member-name">{{ member.name }}</h3>
+            <p class="team-member-role">{{ member.role }}</p>
+            <p *ngIf="member.description" class="team-member-description">{{ member.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

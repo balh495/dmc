@@ -112,21 +112,9 @@
   color: var(--primary-color);
 }
 
-.header__subscribe-btn {
-  background-color: #ff0000;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.header__subscribe-btn:hover {
-  background-color: #cc0000;
-}
 
 .header__support-btn {
-  background-color: #6b7280;
+  background-color: #ff0000;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.375rem;
@@ -136,7 +124,7 @@
 }
 
 .header__support-btn:hover {
-  background-color: #9ca3af;
+  background-color: #cc0000;
 }
 
 .header__categories-nav {
@@ -205,6 +193,87 @@
 .header__search-icon {
   width: 20px;
   height: 20px;
+}
+
+/* Search Results Styles */
+.header__search-results {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  max-height: 400px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+.header__search-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.header__search-results-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.header__search-close-btn {
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.header__search-close-btn:hover {
+  color: #343a40;
+}
+
+.header__search-no-results {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.header__search-results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header__search-result-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f1f3f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header__search-result-item:hover {
+  background-color: #f8f9fa;
+}
+
+.header__search-result-title {
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 0.25rem;
+}
+
+.header__search-result-category {
+  font-size: 0.75rem;
+  color: #6c757d;
 }
 
 /* Hide logo on mobile devices */

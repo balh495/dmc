@@ -1,7 +1,19 @@
 <article class="article-card">
   <a [routerLink]="['/article', article.id]" class="article-card__link">
     <div class="article-card__media">
-      <img [src]="thumbnailUrl" alt="{{ article.title }}" class="article-card__thumbnail">
+      <ng-container *ngIf="article.videoId; else thumbnailImage">
+        <iframe
+          width="100%"
+          height="100%"
+          [src]="safeUrl"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </ng-container>
+      <ng-template #thumbnailImage>
+        <img [src]="thumbnailUrl" alt="{{ article.title }}" class="article-card__thumbnail">
+      </ng-template>
       <div *ngIf="article.category" class="article-card__category">
         {{ article.category }}
       </div>

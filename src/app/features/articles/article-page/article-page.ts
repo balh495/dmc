@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { Article, ArticleData } from '../../../services/article';
 
 @Component({
   selector: 'app-article-page',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './article-page.html',
   styleUrl: './article-page.scss'
 })
@@ -15,6 +15,7 @@ export class ArticlePage implements OnInit {
   article: ArticleData | null = null;
   safeUrl?: SafeResourceUrl;
   thumbnailUrl?: string;
+  relatedArticles: ArticleData[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +42,11 @@ export class ArticlePage implements OnInit {
       } else {
         // If no videoId or imageUrl, use a placeholder image
         this.thumbnailUrl = 'assets/images/article-placeholder.jpg';
+      }
+
+      // Get related articles from the same category
+      if (this.article.category) {
+        this.relatedArticles = this.svc.getArticlesByCategory(this.article.category, this.article.id);
       }
     }
   }

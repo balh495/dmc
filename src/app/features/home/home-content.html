@@ -1,0 +1,99 @@
+<!-- Ad Banner -->
+<div class="ad-banner">
+  <div class="ad-banner__content">
+    <p>Ici votre publicité</p>
+  </div>
+</div>
+
+<main class="layout container">
+  <!-- Left Column: "A la une" section -->
+  <section class="layout__left">
+    <div class="section-header">
+      <h2 class="section-title">À la une</h2>
+    </div>
+    <div class="featured-articles">
+      <div *ngFor="let article of articles.slice(0, 3)" class="featured-article">
+        <div class="featured-article__media">
+          <a [routerLink]="['/article', article.id]">
+            <img *ngIf="article.videoId" src="https://img.youtube.com/vi/{{article.videoId}}/mqdefault.jpg" alt="{{ article.title }}" class="featured-article__thumbnail">
+            <img *ngIf="!article.videoId && article.imageUrl" [src]="article.imageUrl" alt="{{ article.title }}" class="featured-article__thumbnail">
+            <img *ngIf="!article.videoId && !article.imageUrl" src="assets/images/article-placeholder.jpg" alt="{{ article.title }}" class="featured-article__thumbnail">
+          </a>
+        </div>
+        <h3 class="featured-article__title">
+          <a [routerLink]="['/article', article.id]">{{ article.title }}</a>
+        </h3>
+        <p class="featured-article__excerpt">{{ article.excerpt | slice:0:80 }}...</p>
+        <a [routerLink]="['/article', article.id]" class="featured-article__read-more">Lire plus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Center Column: Featured article with video/image -->
+  <section class="layout__center">
+    <div *ngIf="articles.length > 0" class="main-article">
+      <h1 class="main-article__title">{{ articles[0].title }}</h1>
+      <p class="main-article__excerpt">{{ articles[0].excerpt }}</p>
+      <a [routerLink]="['/article', articles[0].id]" class="main-article__link">Lire la suite</a>
+      <div class="main-article__media">
+        <ng-container *ngIf="articles[0].videoId">
+          <iframe
+            width="100%"
+            height="315"
+            [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + articles[0].videoId)"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </ng-container>
+        <img *ngIf="!articles[0].videoId && articles[0].imageUrl" [src]="articles[0].imageUrl" [alt]="articles[0].title" class="main-article__image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Right Column: Recent articles with metadata -->
+  <section class="layout__right">
+    <div class="section-header">
+      <h2 class="section-title">Articles récents</h2>
+    </div>
+    <div class="recent-articles">
+      <div *ngFor="let article of articles.slice(0, 6)" class="recent-article">
+        <h3 class="recent-article__title">
+          <a [routerLink]="['/article', article.id]">{{ article.title }}</a>
+        </h3>
+        <div class="recent-article__meta">
+          <span *ngIf="article.date" class="recent-article__date">{{ article.date }}</span>
+          <span *ngIf="article.category" class="recent-article__category">{{ article.category }}</span>
+          <span *ngIf="article.author" class="recent-article__author">Par {{ article.author }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Event Banner -->
+<div class="event-banner">
+  <div class="event-banner__content">
+    <!-- Event banner content goes here -->
+    <img src="banner.jpg" alt="Event Banner">
+  </div>
+</div>
+
+<!-- Popular Articles by Category -->
+<section class="popular-by-category">
+  <div class="container">
+    <div *ngFor="let category of categories" class="category-section">
+      <div class="category-header">
+        <h2 class="category-title">{{ category }}</h2>
+        <a [routerLink]="['/category', category]" class="view-all-link">Voir tous les articles</a>
+      </div>
+      <div class="category-articles">
+        <app-article-card
+          *ngFor="let article of getArticlesByCategory(category, 4)"
+          [article]="article"
+          class="category-article">
+        </app-article-card>
+      </div>
+    </div>
+  </div>
+</section>
